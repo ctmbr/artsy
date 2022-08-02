@@ -2,7 +2,7 @@
 import * as React from "react";
 import Header from "./components/Header";
 
-import { Box, extendTheme, ChakraProvider } from "@chakra-ui/react";
+import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 
 const colors = {
   brand: {
