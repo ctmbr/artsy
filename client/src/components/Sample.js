@@ -1,50 +1,8 @@
 import React from "react";
-
-const sample = [
-  {
-    img: "placeholder",
-    name: "placeholder",
-    itemPage: "placeholder",
-  },
-  {
-    img: "placeholder",
-    name: "placeholder",
-    itemPage: "placeholder",
-  },
-  {
-    img: "placeholder",
-    name: "placeholder",
-    itemPage: "placeholder",
-  },
-  {
-    img: "placeholder",
-    name: "placeholder",
-    itemPage: "placeholder",
-  },
-  {
-    img: "placeholder",
-    name: "placeholder",
-    itemPage: "placeholder",
-  },
-  {
-    img: "placeholder",
-    name: "placeholder",
-    itemPage: "placeholder",
-  },
-  {
-    img: "placeholder",
-    name: "placeholder",
-    itemPage: "placeholder",
-  },
-  {
-    img: "placeholder",
-    name: "placeholder",
-    itemPage: "placeholder",
-  },
-];
+import products from "./products";
 
 export default function Project() {
-  return sample.map((project) => (
+  return products.map((project) => (
     <section>
       <div>
         <h2>{project.name}</h2>
