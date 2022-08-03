@@ -24,6 +24,10 @@ const typeDefs = gql`
         createdAt: String
     }
 
+    type Checkout {
+        session: ID
+    }
+
     type Query{}
 
     type Mutation{}
