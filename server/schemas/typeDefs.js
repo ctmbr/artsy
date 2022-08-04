@@ -20,17 +20,31 @@ const typeDefs = gql`
     type Review{
         _id: ID
         reviewBody: String!
-        username: String!
+        reviewAuthor: String!
         createdAt: String
+    }
+
+    type Order{
+        _id: ID
+        purchaseDate: String
+        products: [Product]
     }
 
     type Checkout {
         session: ID
     }
 
-    type Query{}
+    type Query{
+        user: User
+        product(_id: ID!): Product
+    }
 
-    type Mutation{}
+    type Mutation{
+        addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+        updateUser(firstName: String, lastName: String, email: String, password: String): User
+        updateProduct(_id: ID!, name: String!, description: String!, image: String!, price: Float!): Product
+        login(email: String!, password: String!): Auth
+    }
 `;
 
 module.exports = typeDefs;
