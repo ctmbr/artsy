@@ -1,6 +1,7 @@
 // import "./App.css";
 import * as React from "react";
 import Header from "./components/Header";
+import Preview from "./components/Preview";
 
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 
@@ -19,16 +20,7 @@ function App() {
     <ChakraProvider theme={theme}>
       <Header />
       <h1>Profile</h1>
-      <div>
-        <p>img</p>
-        <p>img</p>
-        <p>img</p>
-        <p>img</p>
-        <p>img</p>
-        <p>img</p>
-        <p>img</p>
-        <p>img</p>
-      </div>
+      <Preview />
     </ChakraProvider>
   );
 }
