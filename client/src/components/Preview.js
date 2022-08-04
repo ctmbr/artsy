@@ -1,6 +1,6 @@
 import React from "react";
 
-import products from "./Products";
+// TODO: Connect seed data to products
 
 export default function Preview() {
   return products.map((product) => (
