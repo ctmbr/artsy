@@ -6,14 +6,18 @@ function ArtPiece(item) {
         name,
         description,
         image,
-        price,
-        quantity,
-        category,
+        price
     } = item;
 
     return (
         <div>
-            
+            <img 
+                alt={name}
+                src={`/images/${image}`}
+            />
+            <p>{name}</p>
+            <p>{description}</p>
+            <p>{price}</p>
         </div>
     );
 }
