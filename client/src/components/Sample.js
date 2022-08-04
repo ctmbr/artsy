@@ -2,15 +2,15 @@ import React from "react";
 import products from "./products";
 
 export default function Project() {
-  return products.map((project) => (
+  return products.map((product) => (
     <section>
       <div>
-        <h2>{project.name}</h2>
-        <a href={project.liveURL}>
-          <img alt="" src={project.img} />
+        <h2>{product.name}</h2>
+        <a href={product.liveURL}>
+          <img alt="" src={product.img} />
         </a>
         <div>
-          <a className="btn" href={project.repoLink}>
+          <a className="btn" href={product.repoLink}>
             repository
           </a>
         </div>
