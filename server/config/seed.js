@@ -1,6 +1,5 @@
-const db = require("../config/connection");
+const db = require("./connection");
 const { User, Product, Review } = require("../models");
-const reviewSeeds = require('./reviewSeeds.json');
 
 db.once("open", async () => {
 
@@ -73,7 +72,7 @@ db.once("open", async () => {
         },
     ]);
 
-    console.log("reviews seeded");
+    console.log("products seeded");
 
     await User.deleteMany();
 
@@ -92,6 +91,33 @@ db.once("open", async () => {
     });
 
     console.log("users seeded");
+
+    await Review.deleteMany();
+
+    await Review.create([
+        {
+            "reviewText": "Art Piece 1 is one of a kind.",
+            "reviewAuthor": "Juan Toothy"
+        },
+        {
+            "reviewText": "Art Piece 2 is second to none.",
+            "reviewAuthor": "Junior Jr."
+        },
+        {
+            "reviewText": "Art Piece 5 is alive and can drive a bee to its hive.",
+            "reviewAuthor": "Dr. Suess"
+        },
+        {
+            "reviewText": "I've seen stranger things than Art Piece 7.",
+            "reviewAuthor": "Eleven"
+        },
+        {
+            "reviewText": "If you look at Art Piece 8 sideways, it looks like it goes on forever.",
+            "reviewAuthor": "N. Less Lee"
+        },
+    ]);
+
+    console.log("review seeded")
 
     process.exit();
 });
