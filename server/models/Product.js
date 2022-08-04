@@ -31,11 +31,11 @@ const productSchema = new Schema(
             get: (timestamp) => dateFormat(timestamp),
         },
 
-          quantity: {
+        quantity: {
             type: Number,
             min: 0,
             default: 0
-          },
+        },
 
         //   category: {
         //     type: Schema.Types.ObjectId,
