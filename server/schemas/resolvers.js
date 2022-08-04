@@ -26,7 +26,7 @@ const resolvers = {
         },
         checkout: async (parent, args, context) => 
         {
-            const url = new URL(context.headers.referer).origin;
+            const url= new URL(context.headers.referer).origin;
             const order = new Order({ products: args.products });
             const line_items = [];
 
