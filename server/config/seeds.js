@@ -8,37 +8,37 @@ db.once("open", async () => {
     const products = await Product.insertMany(
         [
             {
-                name: "Art Piece 1",
+                name: "Eiffel Tower",
                 description:
                     "Add description here.",
-                image: ".jpg",
-                price: 22.99,
+                image: "eiffel.png",
+                price: 55.99,
                 quantity: 1
             },
 
             {
-                name: "Art Piece 2",
+                name: "Butterfly",
                 description:
                     "Add the second description here.",
-                image: "jpg",
-                price: 11.99,
+                image: "butterfly.png",
+                price: 34.99,
                 quantity: 1
             },
 
             {
-                name: "Art Piece 3",
+                name: "Sunflower",
                 description:
                     "Third desciption here.",
-                image: ".jpg",
+                image: "sunflowersonline.png",
                 price: 77.99,
                 quantity: 1
             },
 
             {
-                name: "Art Piece 4",
+                name: "Gediminas' Tower",
                 description:
                     "Add decription here.",
-                image: ".jpg",
+                image: "gediminopilis.png",
                 price: 33.99,
                 quantity: 1
             },
