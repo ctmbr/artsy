@@ -39,14 +39,14 @@ const resolvers = {
                     image:[`${url}/images/${products[i].image}`],
                 });
 
-                const pricing = await stripe.prices.create({
+                const price = await stripe.prices.create({
                     product: product.id,
                     unit_amount: products[i].prices * 100,
                     currency: 'usd',
                 });
 
                 items.push({
-                    pricing: price.id,
+                    price: price.id,
                     quantity: 1
                 });
             }
