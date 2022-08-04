@@ -1,5 +1,5 @@
-const { Schema } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const { Schema } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 const reviewSchema = new Schema(
     {
@@ -14,12 +14,12 @@ const reviewSchema = new Schema(
             type: String,
             required: true,
             trim: true,
-          },
+        },
         createdAt: {
             type: Date,
             default: Date.now,
             get: (timestamp) => dateFormat(timestamp),
-          },
+        },
     },
 );
 
