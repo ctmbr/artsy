@@ -1,5 +1,6 @@
-const db = require("./connection");
+const db = require("../config/connection");
 const { User, Product, Review } = require("../models");
+const reviewSeeds = require('./reviewSeeds.json');
 
 db.once("open", async () => {
 
@@ -69,16 +70,6 @@ db.once("open", async () => {
             image: ".jpg",
             price: 99.99,
             //   quantity: 100
-        },
-    ]);
-
-    console.log("products seeded");
-
-    await Review.deleteMany();
-
-    await Review.insertMany([
-        {
-
         },
     ]);
 

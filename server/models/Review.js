@@ -1,28 +1,26 @@
 const { Schema } = require('mongoose');
-const moment = require('moment');
+const dateFormat = require('../utils/dateFormat');
 
 const reviewSchema = new Schema(
     {
-        reviewBody: {
+        reviewText: {
             type: String,
             required: true,
-            maxlength: 280
+            minlength: 1,
+            maxlength: 280,
+            trim: true,
         },
-        username: {
+        reviewAuthor: {
             type: String,
-            required: true
-        },
+            required: true,
+            trim: true,
+          },
         createdAt: {
             type: Date,
             default: Date.now,
-            get: timestamp => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a')
-        }
+            get: (timestamp) => dateFormat(timestamp),
+          },
     },
-    {
-        toJSON: {
-            getters: true
-        }
-    }
 );
 
 const Review = mongoose.model("Review", reviewSchema);
