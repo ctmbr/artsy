@@ -37,6 +37,11 @@ const typeDefs = gql`
         session: ID
     }
 
+    type Auth {
+        token: ID
+        user: User
+    }
+
     type Query{
         user: User
         product(_id: ID!): Product
