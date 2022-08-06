@@ -3,7 +3,7 @@ import { ADD_TO_CART } from "../../utils/actions";
 import { Link } from "react-router-dom";
 import { useArtContext } from "../../utils/globalState";
 
-export default function ProductItem()
+function ProductItem()
 {
   const [state, dispatch] = useArtContext();
 
@@ -54,4 +54,6 @@ export default function ProductItem()
       <button onClick={addToCart}>Add to cart</button>
     </div>
   );
-}
+};
+
+export default ProductItem;
