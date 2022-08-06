@@ -34,6 +34,20 @@ export const ADD_USER = gql`
     }
 `;
 
+export const ADD_ORDER = gql`
+    mutation addOrder($products: ID) {
+        addOrder(products: $products) {
+            products {
+                _id
+                name
+                description
+                price
+                quantity
+            }
+        }
+    }
+`;
+
 
 // Not sure if this is actually needed, but leaving it in case.
 export const UPDATE_USER = gql`
