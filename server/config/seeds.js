@@ -8,18 +8,18 @@ db.once("open", async () => {
     const products = await Product.insertMany(
         [
             {
-                name: "Eiffel Tower",
+                name: "Rose Eiffel Tower",
                 description:
-                    "Add description here.",
+                    "Glowing light resonates the as a spiral of rose petals circle the tower.",
                 image: "eiffel.png",
                 price: 55.99,
                 quantity: 1
             },
 
             {
-                name: "Butterfly",
+                name: "Stained Glass Butterfly",
                 description:
-                    "Add the second description here.",
+                    "A collection of glass contructing a Moncarch butterfly which represents transformation and evolution.",
                 image: "butterfly.png",
                 price: 34.99,
                 quantity: 1
@@ -28,7 +28,7 @@ db.once("open", async () => {
             {
                 name: "Sunflower",
                 description:
-                    "Third desciption here.",
+                    "A set of three sunflowers which is an emblem of happiness and usually symbolizes devotion and loyalty.",
                 image: "sunflowersonline.png",
                 price: 77.99,
                 quantity: 1
@@ -37,44 +37,44 @@ db.once("open", async () => {
             {
                 name: "Gediminas' Tower",
                 description:
-                    "Add decription here.",
+                    "A representation of the only remain structure of what was once the city's Upper Castle.",
                 image: "gediminopilis.png",
                 price: 33.99,
                 quantity: 1
             },
 
             {
-                name: "Art Piece 5",
+                name: "One Forced Woman",
                 description:
-                    "Add decription here.",
-                image: ".jpg",
+                    "A take on the infamous 'Three Wise Monkeys', this symbolizes how society involuntarily turns the blind eyes of women in the world.",
+                image: "posterdepprocess.jpg",
                 price: 114.99,
                 quantity: 1
             },
 
             {
-                name: "Art Piece 6",
+                name: "Nightclrawler",
                 description:
-                    "Add description here.",
-                image: ".jpg",
-                price: 399.99,
+                    "Known as being a member of the Marvel comic X-Men, he sits atop a building under the moonlight surveying the world below.",
+                image: "nightcrawlerdark.png",
+                price: 99.99,
                 quantity: 1
             },
 
             {
-                name: "Art Piece 7",
+                name: "Stairway to the Dark",
                 description:
-                    "Add description here.",
-                image: ".jpg",
-                price: 199.99,
+                    "Footprints leads up a staircase to the unknown.",
+                image: "SS_Simona_Final_Overall.jpg",
+                price: 59.99,
                 quantity: 1
             },
 
             {
-                name: "Art Piece 8",
+                name: "At Candle's End",
                 description:
-                    "Add description here.",
-                image: ".jpg",
+                    "A candle in the dark coming to its end.",
+                image: "IMG_20181024_215217.jpg",
                 price: 99.99,
                 quantity: 1
             },
