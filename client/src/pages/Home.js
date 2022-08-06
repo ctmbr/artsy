@@ -1,10 +1,14 @@
 import React from "react";
-import Preview from "../components/productItem/Preview";
+import ProductList from "../components/productList";
+// import Cart from "../components/cart";
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="container">
-      <Preview />
+      <ProductList />
+      {/* <cart /> */}
     </div>
   );
-}
+};
+
+export default Home;
