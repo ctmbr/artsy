@@ -1,10 +1,11 @@
 import React from "react";
 import { loadStripe } from '@stripe/stripe-js';
-import { QUERY_CHECKOUT } from '../../utils/actions';
+import { QUERY_CHECKOUT } from '../../utils/queries';
+import { useArtContext } from "../../utils/globalState";
+import { useLazyQuery } from "@apollo/client";
 import CartItem from '../cartItem';
 import Auth from '../../utils/auth';
 import { Button,
-        DrawerCloseButton,
         Drawer,
         DrawerBody,
         DrawerFooter,
@@ -20,6 +21,9 @@ const Cart = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
 
+    // const [state, dispatch] = useArtContext();
+    // const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+
     return (
         <>
             <Button ref={btnRef} onClick={onOpen}>
@@ -33,7 +37,7 @@ const Cart = () => {
             >
                     <DrawerOverlay />
                     <DrawerContent>
-                        <DrawerHeader>
+                        <DrawerHeader backgroundColor="teal.200">
                             Your Cart
                         </DrawerHeader>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { REMOVE_FROM_CART } from "../../utils/actions";
 import { useArtContext } from "../../utils/globalState";
+import DeleteBtn from "../DeleteBtn";
 
 const CartItem = () => {
 
@@ -14,7 +15,10 @@ const CartItem = () => {
     // };
 
     return (
-        <p>Yippee!!</p>
+        <>
+            <p>Yippee!!</p>
+            <DeleteBtn />
+        </>
     )
 };
 
