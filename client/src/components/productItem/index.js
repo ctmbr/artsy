@@ -1,8 +1,9 @@
 import React from "react";
+import { ADD_TO_CART } from "../../utils/actions";
+import { Link } from "react-router-dom";
 
-// TODO: Connect seed data to products
-
-export default function Preview() {
+export default function Preview()
+{
   return products.map((product) => (
     <section>
       <h2>{product.name}</h2>
