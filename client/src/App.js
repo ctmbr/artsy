@@ -20,7 +20,6 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <Header />
-      <h1>Profile</h1>
       <Home />
     </ChakraProvider>
   );
