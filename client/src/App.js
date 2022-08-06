@@ -1,7 +1,7 @@
 // import "./App.css";
 import * as React from "react";
 
-import Header from "./components/Header";
+import Header from "./components/jumbotron/Header";
 import Home from "./pages/Home";
 
 import { box, extendTheme, ChakraProvider } from "@chakra-ui/react";
