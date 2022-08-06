@@ -34,6 +34,25 @@ export const ADD_USER = gql`
     }
 `;
 
-export const UPDATE_USER = gql`
 
+// Not sure if this is actually needed, but leaving it in case.
+export const UPDATE_USER = gql`
+    mutation updateUser(
+        $firstName: String!
+        $lastName: String!
+        $email: String!
+        $password: String!
+    ) {
+        updateUser(
+            firstName: $firstName
+            lastName: $lastName
+            email: $email
+            password: $password
+        ) {
+            token
+            user {
+                _id
+            }
+        }
+    }
 `;
