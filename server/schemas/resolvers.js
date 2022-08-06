@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Review } = require('../models');
+const { User, Product, Review, Order } = require('../models');
 const { signToken } = require('../utils/auth');
+require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const resolvers = {
@@ -22,6 +23,44 @@ const resolvers = {
         product: async (parent, { _id }) =>
         {
             return await Product.findById(_id).populate("shop");
+        },
+        checkout: async (parent, args, context) => 
+        {
+            const url= new URL(context.headers.referer).origin;
+            const order = new Order({ products: args.products });
+            const line_items = [];
+
+            const { products } = await order.populate("products");
+
+            for (let i = 0; i < products.length; i++)
+            {
+                const product = await stripe.products.create({
+                    name: products[i].name,
+                    description: products[i].description,
+                    image: [`${url}/images/${products[i].image}`],
+                });
+
+                const price = await stripe.prices.create({
+                    product: product.id,
+                    unit_amount: products[i].prices * 100,
+                    currency: 'usd',
+                });
+
+                items.push({
+                    price: price.id,
+                    quantity: 1
+                });
+            }
+
+            const session = await stripe.checkout.sessions.create({
+                payment_method_types: ['card'],
+                line_items,
+                mode: 'payment',
+                success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${url}/`
+            });
+
+            return { session: session.id };
         }
     },
     Mutation: {
@@ -67,6 +106,10 @@ const resolvers = {
             const token = signToken(user);
 
             return { token, user };
+        },
+        addOrder: async (parent, { products }, context) =>
+        {
+            console.log(context);
         }
     }
 };
