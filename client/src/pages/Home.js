@@ -1,13 +1,15 @@
 import React from "react";
-import ProductList from "../components/productList";
-// import Cart from "../components/cart";
+import { ChakraProvider } from "@chakra-ui/react";
+
+import productList from "../components/productList";
+import Cart from "../components/Cart";
 
 const Home = () => {
   return (
-    <div className="container">
-      <ProductList />
-      {/* <cart /> */}
-    </div>
+    <ChakraProvider className="container">
+      <productList />
+      <Cart />
+    </ChakraProvider>
   );
 };
 
