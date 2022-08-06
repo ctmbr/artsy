@@ -1,9 +1,23 @@
 import React from "react";
 import { ADD_TO_CART } from "../../utils/actions";
 import { Link } from "react-router-dom";
+import { useArtConext } from "../../utils/globalState";
 
-export default function Preview()
+export default function ProductItem()
 {
+  const [state, dispatch] = useArtConext();
+
+  const {
+    _id, name, description, image, price, quantity
+  } = item
+
+  const { cart } = state;
+
+  const addToCart = () =>
+  {
+    const itemCart = cart.find((cartItem) => cartItem._id === _id)
+  }
+
   return products.map((product) => (
     <section>
       <h2>{product.name}</h2>
