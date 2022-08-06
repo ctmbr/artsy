@@ -2,6 +2,7 @@ import React from "react";
 import { REMOVE_FROM_CART } from "../../utils/actions";
 import { useArtContext } from "../../utils/globalState";
 import DeleteBtn from "../DeleteBtn";
+import { Flex } from "@chakra-ui/react";
 
 const CartItem = () => {
 
@@ -16,8 +17,10 @@ const CartItem = () => {
 
     return (
         <>
-            <p>Yippee!!</p>
-            <DeleteBtn />
+            <Flex>
+                <p>Yippee!!</p>
+                <DeleteBtn />
+            </Flex>
         </>
     )
 };

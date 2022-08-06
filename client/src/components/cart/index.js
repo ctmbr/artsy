@@ -42,7 +42,12 @@ const Cart = () => {
                         </DrawerHeader>
 
                         <DrawerBody>
-                            <CartItem />
+                            {/* {state.cart.length ? (
+                                <CartItem />
+                            ) : (
+                                <p>Your cart is empty.</p>
+                            )} */}
+                            <CartItem/>
                         </DrawerBody>
 
                         <DrawerFooter>
