@@ -13,14 +13,6 @@ export default function ProductItem()
 
   const { cart } = state;
 
-  function howMuch(quantity)
-  {
-    if (quantity < 1)
-    {
-      return <p>OUT OF STOCK</p>
-    }
-  }
-
   const addToCart = () =>
   {
     const itemCart = cart.find((cartItem) => cartItem._id === _id)

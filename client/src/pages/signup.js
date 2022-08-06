@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link as ReachLink } from "@reach/router";
 import { useMutation } from "@apollo/client";
-import { Box, Input, Button, ButtonGroup } from "@chakra-ui/react";
+import { Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
 import AuthService from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
@@ -21,7 +21,7 @@ export default function Signup(props) {
       },
     });
     const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    AuthService.login(token);
   };
 
   const handleChange = (event) => {
@@ -39,9 +39,9 @@ export default function Signup(props) {
       </Link>
 
       <h2>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
+      <FormControl onSubmit={handleFormSubmit}>
         <Box>
-          <label htmlFor="firstName">First Name:</label>
+          <FormLabel htmlFor="firstName">First Name:</FormLabel>
           <Input
             placeholder="First"
             name="firstName"
@@ -51,7 +51,7 @@ export default function Signup(props) {
           />
         </Box>
         <Box>
-          <label htmlFor="lastName">Last Name:</label>
+          <FormLabel htmlFor="lastName">Last Name:</FormLabel>
           <Input
             placeholder="Last"
             name="lastName"
@@ -61,7 +61,7 @@ export default function Signup(props) {
           />
         </Box>
         <Box>
-          <label htmlFor="email">Email:</label>
+          <FormLabel htmlFor="email">Email:</FormLabel>
           <Input
             placeholder="youremail@test.com"
             name="email"
@@ -71,7 +71,7 @@ export default function Signup(props) {
           />
         </Box>
         <Box>
-          <label htmlFor="pwd">Password:</label>
+          <FormLabel htmlFor="pwd">Password:</FormLabel>
           <Input
             placeholder="******"
             name="password"
@@ -85,7 +85,7 @@ export default function Signup(props) {
             Submit
           </Button>
         </Box>
-      </form>
+      </FormControl>
     </Box>
   );
 }
