@@ -3,16 +3,32 @@ import { loadStripe } from '@stripe/stripe-js';
 import { QUERY_CHECKOUT } from '../../utils/actions';
 import CartItem from '../cartItem';
 import Auth from '../../utils/auth';
-import { Container } from '@chakra-ui/react';
+import { Button, Drawer } from '@chakra-ui/react';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const btnRef = React.useRef();
+
     return (
-        <Container>
-            <p>So cool!</p>
-                <CartItem />
-        </Container>
+        <>
+            <Button ref={btnRef} onClick={onOpen}>
+                Cart
+            </Button>
+            <Drawer
+                isOpen={isOpen}
+                placement='right'
+                onClose={onClose}
+                finalFocusRef={btnRef}
+            >
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <p>So cool!</p>
+                        <CartItem />
+                    </DrawerContent>
+            </Drawer>
+        </>
     );
 };
 
