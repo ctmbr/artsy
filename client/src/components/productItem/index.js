@@ -1,11 +1,11 @@
 import React from "react";
 import { ADD_TO_CART } from "../../utils/actions";
 import { Link } from "react-router-dom";
-import { useArtConext } from "../../utils/globalState";
+import { useArtContext } from "../../utils/globalState";
 
 export default function ProductItem()
 {
-  const [state, dispatch] = useArtConext();
+  const [state, dispatch] = useArtContext();
 
   const {
     _id, name, description, image, price, quantity
@@ -16,6 +16,12 @@ export default function ProductItem()
   const addToCart = () =>
   {
     const itemCart = cart.find((cartItem) => cartItem._id === _id)
+    if (itemCart)
+    {
+      dispatch({
+        type: UPDATE_CART_QUANTITY
+      })
+    }
   }
 
   return products.map((product) => (
