@@ -2,7 +2,7 @@ import React from "react";
 import Jumbotron from "../components/Jumbotron";
 import { Box, Heading } from "@chakra-ui/react";
 
-export default NoMatch = () => {
+const NoMatch = () => {
   return (
     <Box>
       <Jumbotron>
@@ -11,3 +11,5 @@ export default NoMatch = () => {
     </Box>
   );
 };
+
+export default NoMatch;
