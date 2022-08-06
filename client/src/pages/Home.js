@@ -2,7 +2,7 @@ import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import productList from "../components/productList";
-import Cart from "../components/Cart";
+import Cart from "../components/cart";
 
 const Home = () => {
   return (
