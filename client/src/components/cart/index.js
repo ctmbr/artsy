@@ -3,7 +3,16 @@ import { loadStripe } from '@stripe/stripe-js';
 import { QUERY_CHECKOUT } from '../../utils/actions';
 import CartItem from '../cartItem';
 import Auth from '../../utils/auth';
-import { Button, Drawer } from '@chakra-ui/react';
+import { Button,
+        DrawerCloseButton,
+        Drawer,
+        DrawerBody,
+        DrawerFooter,
+        DrawerHeader,
+        DrawerOverlay,
+        DrawerContent,
+        useDisclosure, 
+} from '@chakra-ui/react';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
@@ -24,8 +33,19 @@ const Cart = () => {
             >
                     <DrawerOverlay />
                     <DrawerContent>
-                        <p>So cool!</p>
-                        <CartItem />
+                        <DrawerHeader>
+                            Your Cart
+                        </DrawerHeader>
+
+                        <DrawerBody>
+                            <CartItem />
+                        </DrawerBody>
+
+                        <DrawerFooter>
+                            <Button onClick={onClose}>
+                                Close
+                            </Button>
+                        </DrawerFooter>
                     </DrawerContent>
             </Drawer>
         </>
