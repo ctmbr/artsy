@@ -65,6 +65,12 @@ export const reducer = (state, action) =>
                 cartOpen: !state.cartOpen,
             };
 
+        case ADD_MULTIPLE_TO_CART:
+            return {
+                ...state,
+                cart: [...state.cart, ...action.products],
+        };
+
         default:
             return state;
 
