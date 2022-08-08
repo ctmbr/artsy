@@ -13,6 +13,10 @@ import { Button,
         DrawerOverlay,
         DrawerContent,
         useDisclosure, 
+        Box,
+        Text,
+        Flex, 
+        Spacer
 } from '@chakra-ui/react';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
@@ -48,6 +52,19 @@ const Cart = () => {
                                 <p>Your cart is empty.</p>
                             )} */}
                             <CartItem/>
+                            <Flex borderTop="2px" borderColor="gray.200">
+                                <Box>
+                                    <Text>
+                                        <strong>Total</strong>
+                                    </Text>
+                                </Box>
+                                
+                                <Spacer />
+
+                                <Box>
+                                    $10
+                                </Box>
+                            </Flex>
                         </DrawerBody>
 
                         <DrawerFooter>
