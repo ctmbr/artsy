@@ -7,6 +7,7 @@ import
     CLEAR_CART,
     UPDATE_CART_QUANTITY,
     TOGGLE_CART,
+    ADD_MULTIPLE_TO_CART
 } from './actions';
 
 export const reducer = (state, action) =>

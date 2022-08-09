@@ -19,7 +19,7 @@ import { Button,
         Spacer
 } from '@chakra-ui/react';
 import { idbPromise } from "../../utils/helpers";
-import { ADD_TO_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
+import { ADD_MULTIPLE_TO_CART, TOGGLE_CART } from "../../utils/actions";
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
@@ -48,6 +48,10 @@ const Cart = () => {
             getCart();
         }
     }, [state.cart.length, dispatch]);
+
+    function toggleCart() {
+        dispatch({ type: TOGGLE_CART })
+    }
 
     function calcTotal() {
         let sum = 0;
@@ -105,7 +109,7 @@ const Cart = () => {
                                     <Spacer />
 
                                     <Box>
-                                        ${calculateTotal()}
+                                        ${calcTotal()}
                                     </Box>
                                     </Flex>
                                     {Auth.loggedIn() ? (
