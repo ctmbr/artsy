@@ -11,7 +11,6 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 
-import authLink from "./utils/auth";
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
 import Login from "./pages/login";
@@ -36,6 +35,16 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
@@ -43,7 +52,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloClient client={client}>
+    <ApolloProvider client={client}>
       <ArtProvider>
         <ChakraProvider theme={theme}>
           <Router>
@@ -59,7 +68,7 @@ function App() {
           </Router>
         </ChakraProvider>
       </ArtProvider>
-    </ApolloClient>
+    </ApolloProvider>
   );
 }
 
