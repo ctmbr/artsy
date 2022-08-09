@@ -34,7 +34,9 @@ export default function Signup(props) {
 
   return (
     <Box>
-      <Link to="/login">← Go to Login</Link>
+      <Button as={Link} to="/login">
+        ← Go to Login
+      </Button>
 
       <h2>Signup</h2>
       <FormControl onSubmit={handleFormSubmit}>

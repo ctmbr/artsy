@@ -40,7 +40,9 @@ function Login(props) {
 
   return (
     <Box className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
+      <Button as={Link} to="/signup">
+        ← Go to Signup
+      </Button>
 
       <h2>Login</h2>
       <FormControl onSubmit={handleFormSubmit}>
