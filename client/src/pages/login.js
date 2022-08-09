@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Link as ReachLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -40,9 +40,7 @@ function Login(props) {
 
   return (
     <Box className="container my-1">
-      <Link as={ReachLink} to="/signup">
-        ← Go to Signup
-      </Link>
+      <Link to="/signup">← Go to Signup</Link>
 
       <h2>Login</h2>
       <FormControl onSubmit={handleFormSubmit}>
