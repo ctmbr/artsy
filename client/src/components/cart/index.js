@@ -89,8 +89,8 @@ const Cart = () => {
                         </DrawerHeader>
 
                         <DrawerBody>
-                            {state.cart.length > 0 ? (
-                                <>
+                            {state.cart.length ? (
+                                <Flex flexDirection="column">
                                     {state.cart.map((item) => (
                                         <CartItem key={item._id} item={item} />
                                     ))}
@@ -119,11 +119,10 @@ const Cart = () => {
                                     ) : (
                                         <Text>Please log in to finish your purchase.</Text>
                                     )}
-                                </>
+                                </Flex>
                             ) : (
-                                <p>Your cart is empty.</p>
+                                <Text>Your cart is empty.</Text>
                             )}
-                            <CartItem/>
                         </DrawerBody>
 
                         <DrawerFooter>

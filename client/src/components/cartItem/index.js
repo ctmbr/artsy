@@ -29,6 +29,7 @@ const CartItem = ({ item }) => {
                     <Image
                         boxSize='60px'
                         src={`/images/${item.image}`}
+                        fallbackSrc="https://upload.wikimedia.org/wikipedia/commons/e/e0/PlaceholderLC.png"
                         alt={`${item.name}`}
                     />
                 </Box>
