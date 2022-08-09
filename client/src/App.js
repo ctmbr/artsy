@@ -17,6 +17,7 @@ import Login from "./pages/login";
 import NoMatch from "./pages/noMatch";
 import Signup from "./pages/signup";
 import Success from "./pages/success";
+import Nav from "./components/Nav";
 
 const colors = {
   brand: {
