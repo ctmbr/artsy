@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
+import ProductItem from "../productItem";
 import { useArtContext } from "../../utils/globalState";
 import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
-import ProductItem from "../productItem";
 import { SimpleGrid } from '@chakra-ui/react';
 
 function productList()
@@ -12,6 +12,8 @@ function productList()
   const [state, dispatch] = useArtContext();
 
   const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
+
+  const { productId } = state;
 
   useEffect(() =>
   {
