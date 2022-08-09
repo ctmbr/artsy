@@ -30,10 +30,12 @@ const theme = extendTheme({ colors });
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Jumbotron />
-      <Home />
-    </ChakraProvider>
+    <ApolloClient>
+      <ChakraProvider theme={theme}>
+        <Jumbotron />
+        <Home />
+      </ChakraProvider>
+    </ApolloClient>
   );
 }
 
