@@ -10,7 +10,7 @@ db.once("open", async () => {
             {
                 name: "Rose Eiffel Tower",
                 description:
-                    "Glowing light resonates the as a spiral of rose petals circle the tower.",
+                    "Glowing light resonates as a spiral of rose petals circle the tower.",
                 image: "eiffel.png",
                 price: 55.99,
                 quantity: 1
