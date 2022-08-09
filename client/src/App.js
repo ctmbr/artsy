@@ -1,10 +1,22 @@
 // import "./App.css";
 import * as React from "react";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
-
-import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import Login from "./pages/login";
+import NoMatch from "./pages/noMatch";
+import Signup from "./pages/signup";
+import Success from "./pages/success";
 
 const colors = {
   brand: {
