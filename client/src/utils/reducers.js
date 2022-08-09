@@ -23,7 +23,7 @@ export const reducer = (state, action) =>
         case ADD_TO_CART:
             return {
                 ...state,
-                cartOpen: true,
+                isOpen: true,
                 cart: [...state.cart, action.product],
             };
 
@@ -35,21 +35,21 @@ export const reducer = (state, action) =>
 
             return {
                 ...state,
-                cartOpen: newState.length > 0,
+                isOpen: newState.length > 0,
                 cart: newState,
             };
 
         case CLEAR_CART:
             return {
                 ...state,
-                cartOpen: false,
+                isOpen: false,
                 cart: [],
             };
 
         case UPDATE_CART_QUANTITY:
             return {
                 ...state,
-                cartOpen: true,
+                isOpen: true,
                 cart: state.cart.map((product) =>
                 {
                     if (action._id === product.id)
@@ -63,7 +63,7 @@ export const reducer = (state, action) =>
         case TOGGLE_CART:
             return {
                 ...state,
-                cartOpen: !state.cartOpen,
+                isOpen: !state.isOpen,
             };
 
         case ADD_MULTIPLE_TO_CART:
