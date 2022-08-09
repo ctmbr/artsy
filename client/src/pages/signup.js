@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link as ReachLink } from "@reach/router";
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
@@ -34,9 +34,7 @@ export default function Signup(props) {
 
   return (
     <Box>
-      <Link as={ReachLink} to="/login">
-        ← Go to Login
-      </Link>
+      <Link to="/login">← Go to Login</Link>
 
       <h2>Signup</h2>
       <FormControl onSubmit={handleFormSubmit}>
