@@ -43,8 +43,17 @@ function App() {
   return (
     <ApolloClient client={client}>
       <ChakraProvider theme={theme}>
-        <Jumbotron />
-        <Home />
+        <Router>
+          <Jumbotron />
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/nomatch" element={<NoMatch />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/success" element={<Success />} />
+          </Routes>
+        </Router>
       </ChakraProvider>
     </ApolloClient>
   );
