@@ -2,8 +2,10 @@ import React from "react";
 import { ADD_TO_CART } from "../../utils/actions";
 import { Link } from "react-router-dom";
 import { useArtContext } from "../../utils/globalState";
+import { UPDATE_CART_QUANTITY } from "../../utils/actions";
+import { idbPromise } from "../../utils/helpers";
 
-function ProductItem()
+function ProductItem(item)
 {
   const [state, dispatch] = useArtContext();
 
@@ -21,19 +23,21 @@ function ProductItem()
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: _id,
-        purchaseQuantity: parseInt(itemCart, purchaseQuantity) + 1
+        //purchaseQuantity: parseInt(itemCart, purchaseQuantity) + 1
       });
       idbPromise("cart", "put", {
         ...itemCart,
-        purchaseQuantity: parseInt(itemCart.purchaseQuantity) + 1
+        //purchaseQuantity: parseInt(itemCart.purchaseQuantity) + 1
       });
     } else
     {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...item, purchaseQuantity: 1 }
+        product: { ...item }
+        //product: { ...item, purchaseQuantity: 1 }
       });
-      idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
+      idbPromise("cart", "put", { ...item });
+      //idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
     }
   }
 
