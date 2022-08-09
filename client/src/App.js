@@ -11,6 +11,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 
+import authLink from "./utils/auth";
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
 import Login from "./pages/login";
@@ -28,6 +29,15 @@ const colors = {
 };
 
 const theme = extendTheme({ colors });
+
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
