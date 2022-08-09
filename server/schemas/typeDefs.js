@@ -7,6 +7,7 @@ const typeDefs = gql`
         lastName: String!
         email: String!
         password: String!
+        orders: [Order]
     }
 
     type Product{
@@ -34,6 +35,11 @@ const typeDefs = gql`
 
     type Checkout {
         session: ID
+    }
+
+    type Auth {
+        token: ID
+        user: User
     }
 
     type Query{

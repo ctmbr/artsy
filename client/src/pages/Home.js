@@ -1,10 +1,16 @@
 import React from "react";
-import Preview from "../components/Preview";
+import { ChakraProvider } from "@chakra-ui/react";
 
-export default function Home() {
+import ProductList from "../components/ProductList";
+import Cart from "../components/Cart";
+
+const Home = () => {
   return (
-    <div className="container">
-      <Preview />
-    </div>
+    <ChakraProvider className="container">
+      <ProductList />
+      <Cart />
+    </ChakraProvider>
   );
-}
+};
+
+export default Home;

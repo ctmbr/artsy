@@ -1,10 +1,10 @@
 // import "./App.css";
 import * as React from "react";
 
-import Header from "./components/Header";
+import Header from "./components/Jumbotron";
 import Home from "./pages/Home";
 
-import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import { box, extendTheme, ChakraProvider } from "@chakra-ui/react";
 
 const colors = {
   brand: {
@@ -20,7 +20,6 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <Header />
-      <h1>Profile</h1>
       <Home />
     </ChakraProvider>
   );
