@@ -18,7 +18,9 @@ import Login from "./pages/login";
 import NoMatch from "./pages/noMatch";
 import Signup from "./pages/signup";
 import Success from "./pages/success";
-import Nav from "./components/Nav";
+import Nav from "./components/nav";
+
+import { ArtProvider } from "./utils/globalState";
 
 const colors = {
   brand: {
@@ -42,19 +44,21 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloClient client={client}>
-      <ChakraProvider theme={theme}>
-        <Router>
-          <Jumbotron />
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/nomatch" element={<NoMatch />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/success" element={<Success />} />
-          </Routes>
-        </Router>
-      </ChakraProvider>
+      <ArtProvider>
+        <ChakraProvider theme={theme}>
+          <Router>
+            <Jumbotron />
+            <Nav />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/nomatch" element={<NoMatch />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/success" element={<Success />} />
+            </Routes>
+          </Router>
+        </ChakraProvider>
+      </ArtProvider>
     </ApolloClient>
   );
 }
