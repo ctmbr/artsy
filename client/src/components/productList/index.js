@@ -52,8 +52,6 @@ function ProductList()
   //   );
   // }
 
-  console.log(data)
-
   return (
     <div className="my-2">
       <h2>Artworks:</h2>
