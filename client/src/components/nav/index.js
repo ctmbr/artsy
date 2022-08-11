@@ -11,7 +11,7 @@ function Nav() {
       return (
         <Tabs>
           <TabList>
-            <Tab className="mx-1">
+            <Tab>
               <a href="/" onClick={() => Auth.logout()}>
                 Logout
               </a>
@@ -24,10 +24,10 @@ function Nav() {
       return (
         <Tabs>
           <TabList>
-            <Tab className="mx-1">
+            <Tab>
               <Link to="/login">Login</Link>
             </Tab>
-            <Tab className="mx-1">
+            <Tab>
               <Link to="/signup">Signup</Link>
             </Tab>
             <Cart as={Tab} />
@@ -38,7 +38,7 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-1">
+    <header>
       <h1>
         <Link to="/">
           <nav aria-labelledby="nav-title">
