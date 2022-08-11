@@ -30,7 +30,7 @@ const resolvers = {
         },
         checkout: async (parent, args, context) => 
         {
-            const url= new URL(context.headers.referer).origin;
+            const url = new URL(context.headers.referer).origin;
             const order = new Order({ products: args.products });
             const line_items = [];
 
@@ -100,7 +100,7 @@ const resolvers = {
                 throw new AuthenticationError("Incorrect credentials");
             }
 
-            const correctPw = await User.isCorrectPassword(password);
+            const correctPw = await user.isCorrectPassword(password);
 
             if (!correctPw)
             {
@@ -113,11 +113,13 @@ const resolvers = {
         },
         addOrder: async (parent, { products }, context) =>
         {
-            if (context.user) {
+            if (context.user)
+            {
                 const order = new Order({ products });
 
                 await User.findByIdAndUpdate(context.user._id, {
-                    $push: { orders: order } });
+                    $push: { orders: order }
+                });
 
                 return order;
             }
