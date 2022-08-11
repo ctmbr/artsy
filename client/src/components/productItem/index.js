@@ -4,18 +4,22 @@ import { Link } from "react-router-dom";
 import { useArtContext } from "../../utils/globalState";
 import { UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-import { Image, Heading, Box, Button } from "@chakra-ui/react";
+import { Image, Heading, Box, Button, VStack } from "@chakra-ui/react";
+import "./style.css";
 
-function ProductItem(item) {
+function ProductItem(item)
+{
   const [state, dispatch] = useArtContext();
 
   const { _id, name, description, image, price, quantity } = item;
 
   const { cart } = state;
 
-  const addToCart = () => {
+  const addToCart = () =>
+  {
     const itemCart = cart.find((cartItem) => cartItem._id === _id);
-    if (itemCart) {
+    if (itemCart)
+    {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: _id,
@@ -25,7 +29,8 @@ function ProductItem(item) {
         ...itemCart,
         //purchaseQuantity: parseInt(itemCart.purchaseQuantity) + 1
       });
-    } else {
+    } else
+    {
       dispatch({
         type: ADD_TO_CART,
         product: { ...item },
@@ -38,16 +43,18 @@ function ProductItem(item) {
 
   return (
     <Box className="card px-1 py-1">
-      <Link to={`/products/${_id}`}>
-        <Image src={`/images/${image}`} alt={name} />
-        <Heading size="xl">{name}</Heading>
-        <p>{description}</p>
-        {quantity < 1 && <p> OUT OF STOCK </p>}
-      </Link>
-      <Box>
-        <span>${price}</span>
-      </Box>
-      <Button onClick={addToCart}>Add to cart</Button>
+      <VStack spacing="8pt">
+        <Link to={`/products/${_id}`}>
+          <Image src={`/images/${image}`} alt={name} />
+          <Heading size="xl">{name}</Heading>
+          <p>{description}</p>
+          {quantity < 1 && <p> OUT OF STOCK </p>}
+        </Link>
+        <Box>
+          <span>${price}</span>
+        </Box>
+        <Button onClick={addToCart}>Add to cart</Button>
+      </VStack>
     </Box>
   );
 }
