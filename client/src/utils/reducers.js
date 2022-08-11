@@ -6,7 +6,6 @@ import
     REMOVE_FROM_CART,
     CLEAR_CART,
     UPDATE_CART_QUANTITY,
-    TOGGLE_CART,
     ADD_MULTIPLE_TO_CART
 } from './actions';
 
@@ -23,7 +22,7 @@ export const reducer = (state, action) =>
         case ADD_TO_CART:
             return {
                 ...state,
-                isOpen: true,
+                cartOpen: true,
                 cart: [...state.cart, action.product],
             };
 
@@ -35,21 +34,21 @@ export const reducer = (state, action) =>
 
             return {
                 ...state,
-                isOpen: newState.length > 0,
+                cartOpen: newState.length > 0,
                 cart: newState,
             };
 
         case CLEAR_CART:
             return {
                 ...state,
-                isOpen: false,
+                cartOpen: false,
                 cart: [],
             };
 
         case UPDATE_CART_QUANTITY:
             return {
                 ...state,
-                isOpen: true,
+                cartOpen: true,
                 cart: state.cart.map((product) =>
                 {
                     if (action._id === product.id)

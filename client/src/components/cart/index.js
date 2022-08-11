@@ -74,13 +74,10 @@ const Cart = () =>
     {
         const productIds = [];
 
-        console.log(productIds);
-
         state.cart.forEach((item) =>
         {
             for (let i = 0; i < item.purchaseQuantity; i++)
             {
-                console.log(item._id)
                 productIds.push(item._id);
             }
         });
