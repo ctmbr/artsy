@@ -1,7 +1,8 @@
 const db = require("./connection");
 const { User, Product, Review } = require("../models");
 
-db.once("open", async () => {
+db.once("open", async () =>
+{
 
     await Product.deleteMany();
 
@@ -53,7 +54,7 @@ db.once("open", async () => {
             },
 
             {
-                name: "Nightclrawler",
+                name: "Nightcrawler",
                 description:
                     "Known as being a member of the Marvel comic X-Men, he sits atop a building under the moonlight surveying the world below.",
                 image: "nightcrawlerdark.png",
