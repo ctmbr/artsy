@@ -1,6 +1,7 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import Cart from "../cart";
+
 import { Link } from "react-router-dom";
 import { Tabs, TabList, Tab } from "@chakra-ui/react";
 

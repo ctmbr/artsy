@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useArtContext } from "../../utils/globalState";
 import { UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-import { Image, Heading, Box, Button } from "@chakra-ui/react";
+import { Image, Heading, Container, Box, Button } from "@chakra-ui/react";
 
 function ProductItem(item) {
   const [state, dispatch] = useArtContext();
@@ -37,7 +37,7 @@ function ProductItem(item) {
   };
 
   return (
-    <Box className="card px-1 py-1">
+    <Container className="card px-1 py-1">
       <Link to={`/products/${_id}`}>
         <Image src={`/images/${image}`} alt={name} />
         <Heading size="xl">{name}</Heading>
@@ -48,7 +48,7 @@ function ProductItem(item) {
         <span>${price}</span>
       </Box>
       <Button onClick={addToCart}>Add to cart</Button>
-    </Box>
+    </Container>
   );
 }
 
