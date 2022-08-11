@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import
-  {
-    Box,
-    FormControl,
-    FormLabel,
-    Input,
-    FormErrorMessage,
-    Button,
-  } from "@chakra-ui/react";
+{
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  FormErrorMessage,
+  Button,
+} from "@chakra-ui/react";
 
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";

@@ -5,11 +5,13 @@ import { Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 
-export default function Signup(props) {
+export default function Signup(props)
+{
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event) =>
+  {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
@@ -23,7 +25,8 @@ export default function Signup(props) {
     Auth.login(token);
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event) =>
+  {
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -75,7 +78,7 @@ export default function Signup(props) {
           />
         </Box>
         <Box>
-          <Button colorScheme="blue" type="submit">
+          <Button onClick={handleFormSubmit} colorScheme="blue" type="submit">
             Submit
           </Button>
         </Box>
