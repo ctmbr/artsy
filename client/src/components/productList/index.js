@@ -63,8 +63,6 @@ function ProductList()
           {state.products.length ? (
               <Wrap justify="center">
                 {state.products.map((product) => (
-                  <WrapItem>
-                    <Center w="500px">
                       <ProductItem
                         key={product._id}
                         _id={product._id}
@@ -74,8 +72,6 @@ function ProductList()
                         price={product.price}
                         quantity={product.quantity}
                       />
-                    </Center>
-                  </WrapItem>
                 ))}
               </Wrap>
           ) : (
