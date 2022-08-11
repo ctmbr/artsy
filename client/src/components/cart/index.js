@@ -1,25 +1,25 @@
 import React, { useEffect } from "react";
 import { loadStripe } from '@stripe/stripe-js';
 import { QUERY_CHECKOUT } from '../../utils/queries';
-import { useArtContext } from "../../utils/globalState";
+import { useArtContext } from "../../utils/GlobalState";
 import { useLazyQuery } from "@apollo/client";
 import CartItem from '../cartItem';
 import Auth from '../../utils/auth';
 import
-    {
-        Button,
-        Drawer,
-        DrawerBody,
-        DrawerFooter,
-        DrawerHeader,
-        DrawerOverlay,
-        DrawerContent,
-        useDisclosure,
-        Box,
-        Text,
-        Flex,
-        Spacer
-    } from '@chakra-ui/react';
+{
+    Button,
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    useDisclosure,
+    Box,
+    Text,
+    Flex,
+    Spacer
+} from '@chakra-ui/react';
 import { idbPromise } from "../../utils/helpers";
 import { ADD_MULTIPLE_TO_CART } from "../../utils/actions";
 
