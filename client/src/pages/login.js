@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import {
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-  Button,
-} from "@chakra-ui/react";
+import
+  {
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    FormErrorMessage,
+    Button,
+  } from "@chakra-ui/react";
 
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-function Login(props) {
+function Login(props)
+{
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event) =>
+  {
     event.preventDefault();
-    try {
+    try
+    {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
@@ -29,7 +33,8 @@ function Login(props) {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event) =>
+  {
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -67,7 +72,7 @@ function Login(props) {
             </FormErrorMessage>
           </Box>
         ) : null}
-        <Box className="flex-row flex-end">
+        <Box onClick={handleFormSubmit} className="flex-row flex-end">
           <Button colorScheme="blue" type="submit">
             Submit
           </Button>
