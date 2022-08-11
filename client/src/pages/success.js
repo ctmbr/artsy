@@ -1,29 +1,34 @@
 import React, { useEffect } from "react";
 import { Box, Heading } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
-
 import Jumbotron from "../components/Jumbotron";
 import { ADD_ORDER } from "../utils/mutations";
 import { idbPromise } from "../utils/helpers";
 
-export default function Success() {
+export default function Success()
+{
   const [addOrder] = useMutation(ADD_ORDER);
 
-  useEffect(() => {
-    async function saveOrder() {
+  useEffect(() =>
+  {
+    async function saveOrder()
+    {
       const cart = await idbPromise("cart", "get");
       const products = cart.map((item) => item._id);
 
-      if (products.length) {
+      if (products.length)
+      {
         const { data } = await addOrder({ variables: { products } });
         const productData = data.addOrder.products;
 
-        productData.forEach((item) => {
+        productData.forEach((item) =>
+        {
           idbPromise("cart", "delete", item);
         });
       }
 
-      setTimeout(() => {
+      setTimeout(() =>
+      {
         window.location.assign("/");
       }, 3000);
     }
