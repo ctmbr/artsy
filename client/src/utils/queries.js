@@ -32,8 +32,8 @@ export const QUERY_CHECKOUT = gql`
 `;
 
 export const QUERY_ALL_PRODUCTS = gql`
-    {
-        products{
+    query getProducts{
+        products {
             _id
             name
             description

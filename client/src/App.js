@@ -11,14 +11,15 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 
-import authLink from "./utils/auth";
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
 import Login from "./pages/login";
 import NoMatch from "./pages/noMatch";
 import Signup from "./pages/signup";
 import Success from "./pages/success";
-import Nav from "./components/Nav";
+import Nav from "./components/nav";
+
+import { ArtProvider } from "./utils/globalState";
 
 const colors = {
   brand: {
@@ -28,10 +29,22 @@ const colors = {
   },
 };
 
-const theme = extendTheme({ colors });
+const theme = extendTheme({
+  semanticTokens: { colors: colors, marginleft: 60 },
+});
 
 const httpLink = createHttpLink({
   uri: "/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
 });
 
 const client = new ApolloClient({
@@ -41,21 +54,23 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloClient client={client}>
-      <ChakraProvider theme={theme}>
-        <Router>
-          <Jumbotron />
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/nomatch" element={<NoMatch />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/success" element={<Success />} />
-          </Routes>
-        </Router>
-      </ChakraProvider>
-    </ApolloClient>
+    <ApolloProvider client={client}>
+      <ArtProvider>
+        <ChakraProvider marginLeft={60}>
+          <Router>
+            <Jumbotron />
+            <Nav />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/nomatch" element={<NoMatch />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/success" element={<Success />} />
+            </Routes>
+          </Router>
+        </ChakraProvider>
+      </ArtProvider>
+    </ApolloProvider>
   );
 }
 
