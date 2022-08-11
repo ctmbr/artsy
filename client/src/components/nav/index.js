@@ -5,9 +5,12 @@ import Cart from "../cart";
 import { Link } from "react-router-dom";
 import { Tabs, TabList, Tab } from "@chakra-ui/react";
 
-function Nav() {
-  function showNavigation() {
-    if (Auth.loggedIn()) {
+function Nav()
+{
+  function showNavigation()
+  {
+    if (Auth.loggedIn())
+    {
       return (
         <Tabs>
           <TabList>
@@ -20,7 +23,8 @@ function Nav() {
           </TabList>
         </Tabs>
       );
-    } else {
+    } else
+    {
       return (
         <Tabs>
           <TabList>
