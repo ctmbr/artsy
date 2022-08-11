@@ -33,7 +33,7 @@ export default function Signup(props) {
 
   return (
     <Box className="form">
-      <FormControl onSubmit={handleFormSubmit}>
+      <FormControl isRequired onSubmit={handleFormSubmit}>
         <Box>
           <FormLabel htmlFor="firstName">First Name:</FormLabel>
           <Input
