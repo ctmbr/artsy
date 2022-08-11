@@ -1,6 +1,7 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import Cart from "../cart";
+
 import { Link } from "react-router-dom";
 import { Tabs, TabList, Tab } from "@chakra-ui/react";
 
@@ -10,16 +11,11 @@ function Nav() {
       return (
         <Tabs>
           <TabList>
-            <Tab className="mx-1">
+            <Tab>
               <a href="/" onClick={() => Auth.logout()}>
                 Logout
               </a>
             </Tab>
-            {/* <li className="mx-1">
-                        <Link to="/orderHistory">
-                            Order History
-                        </Link>
-                    </li> */}
             <Cart as={Tab} />
           </TabList>
         </Tabs>
@@ -28,10 +24,10 @@ function Nav() {
       return (
         <Tabs>
           <TabList>
-            <Tab className="mx-1">
+            <Tab>
               <Link to="/login">Login</Link>
             </Tab>
-            <Tab className="mx-1">
+            <Tab>
               <Link to="/signup">Signup</Link>
             </Tab>
             <Cart as={Tab} />
@@ -42,7 +38,7 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-1">
+    <header>
       <h1>
         <Link to="/">
           <nav aria-labelledby="nav-title">
