@@ -46,28 +46,28 @@ function Details() {
         }
     }, [products, data, loading, dispatch, id]);
 
-    const addToCart = () =>
-    {
-        const itemCart = cart.find((cartItem) => cartItem._id === _id)
+    // const addToCart = () =>
+    // {
+    //     const itemCart = cart.find((cartItem) => cartItem._id === _id)
 
-        if (itemCart)
-            {
-            dispatch({
-                type: UPDATE_CART_QUANTITY,
-                _id: _id,
-            });
-            idbPromise("cart", "put", {
-                ...itemCart,
-            });
-            } else
-            {
-            dispatch({
-                type: ADD_TO_CART,
-                product: { ...item }
-            });
-            idbPromise("cart", "put", { ...item });
-        }
-    };
+    //     if (itemCart)
+    //         {
+    //         dispatch({
+    //             type: UPDATE_CART_QUANTITY,
+    //             _id: _id,
+    //         });
+    //         idbPromise("cart", "put", {
+    //             ...itemCart,
+    //         });
+    //         } else
+    //         {
+    //         dispatch({
+    //             type: ADD_TO_CART,
+    //             product: { ...item }
+    //         });
+    //         idbPromise("cart", "put", { ...item });
+    //     }
+    // };
 
     return (
         <>

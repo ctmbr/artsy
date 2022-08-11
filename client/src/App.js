@@ -13,6 +13,7 @@ import { ChakraProvider, Box } from "@chakra-ui/react";
 
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
+import Details from "./pages/Details";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Signup from "./pages/Signup";
@@ -63,6 +64,7 @@ function App() {
                 <Route path="/nomatch" element={<NoMatch />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/success" element={<Success />} />
+                <Route path="/products/:id" element={<Details />} />
               </Routes>
             </Router>
           </Box>

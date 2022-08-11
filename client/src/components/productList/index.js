@@ -5,15 +5,7 @@ import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { Spinner, Box, Wrap, WrapItem, Center } from "@chakra-ui/react";
-=======
-import { Spinner, Box } from "@chakra-ui/react";
->>>>>>> 9d21f217 (merge conflict)
-=======
-import { Spinner, Box, Flex } from "@chakra-ui/react";
->>>>>>> 60de6f02 (attempting to fix conflict)
 
 function ProductList()
 {
