@@ -2,14 +2,15 @@
 import * as React from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {
+import
+{
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
@@ -21,23 +22,20 @@ import Nav from "./components/nav";
 
 import { ArtProvider } from "./utils/globalState";
 
-const colors = {
-  brand: {
-    900: "#1a365d",
-    800: "#153e75",
-    700: "#2a69ac",
-  },
-};
-
-const theme = extendTheme({
-  semanticTokens: { colors: colors, marginleft: 60 },
-});
+// const colors = {
+//   brand: {
+//     900: "#1a365d",
+//     800: "#153e75",
+//     700: "#2a69ac",
+//   },
+// };
 
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
-const authLink = setContext((_, { headers }) => {
+const authLink = setContext((_, { headers }) =>
+{
   const token = localStorage.getItem("id_token");
   return {
     headers: {
@@ -52,7 +50,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
+function App()
+{
   return (
     <ApolloProvider client={client}>
       <ArtProvider>
