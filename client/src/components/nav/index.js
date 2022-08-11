@@ -16,11 +16,6 @@ function Nav() {
                 Logout
               </a>
             </Tab>
-            {/* <li className="mx-1">
-                        <Link to="/orderHistory">
-                            Order History
-                        </Link>
-                    </li> */}
             <Cart as={Tab} />
           </TabList>
         </Tabs>
