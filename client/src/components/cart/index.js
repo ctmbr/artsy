@@ -18,7 +18,8 @@ import
     Box,
     Text,
     Flex,
-    Spacer
+    Spacer,
+    Center
 } from '@chakra-ui/react';
 import { idbPromise } from "../../utils/helpers";
 import { ADD_MULTIPLE_TO_CART } from "../../utils/actions";
@@ -39,6 +40,7 @@ const Cart = () =>
         {
             stripePromise.then((res) =>
             {
+                console.log(res)
                 res.redirectToCheckout({ sessionId: data.checkout.session });
             });
         }
@@ -63,7 +65,7 @@ const Cart = () =>
         let sum = 0;
         state.cart.forEach((item) =>
         {
-            sum += item.price * item.purchaseQuantity;
+            sum += item.price;
         });
         return sum.toFixed(2);
     }
@@ -124,11 +126,13 @@ const Cart = () =>
                                 </Flex>
                                 {Auth.loggedIn() ? (
                                     <Box>
-                                        <Button
-                                            onClick={submitCheckout}
-                                        >
-
-                                        </Button>
+                                        <Center>
+                                            <Button
+                                                onClick={submitCheckout}
+                                            >
+                                                Checkout
+                                            </Button>
+                                        </Center>
                                     </Box>
                                 ) : (
                                     <Text>Please log in to finish your purchase.</Text>

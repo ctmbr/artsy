@@ -28,6 +28,15 @@ const resolvers = {
         {
             return await Product.findById(_id);
         },
+        order: async (parent, { _id }, context) => {
+            if (context.user) {
+              const user = await User.findById(context.user._id);
+      
+              return user.orders.id(_id);
+            }
+      
+            throw new AuthenticationError('Not logged in');
+        },
         checkout: async (parent, args, context) => 
         {
             const url = new URL(context.headers.referer).origin;
@@ -50,7 +59,7 @@ const resolvers = {
                     currency: 'usd',
                 });
 
-                items.push({
+                line_items.push({
                     price: price.id,
                     quantity: 1
                 });
@@ -65,6 +74,10 @@ const resolvers = {
             });
 
             return { session: session.id };
+        },
+        reviews: async (parent, { _id }) =>
+        {
+            return await Review.find();
         }
     },
     Mutation: {

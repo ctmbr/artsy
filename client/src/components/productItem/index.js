@@ -25,21 +25,19 @@ function ProductItem(item)
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: _id,
-        //purchaseQuantity: parseInt(itemCart, purchaseQuantity) + 1
+        purchaseQuantity: parseInt(itemCart, quantity) + 1
       });
       idbPromise("cart", "put", {
         ...itemCart,
-        //purchaseQuantity: parseInt(itemCart.purchaseQuantity) + 1
+        purchaseQuantity: parseInt(itemCart.quantity) + 1
       });
     } else
     {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...item }
-        //product: { ...item, purchaseQuantity: 1 }
+        product: { ...item, quantity: 1 }
       });
-      idbPromise("cart", "put", { ...item });
-      //idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
+      idbPromise("cart", "put", { ...item, quantity: 1 });
     }
   }
 
