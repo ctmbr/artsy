@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { loadStripe } from '@stripe/stripe-js';
 import { QUERY_CHECKOUT } from '../../utils/queries';
-import { useArtContext } from "../../utils/globalState";
+import { useArtContext } from "../../utils/GlobalState";
 import { useLazyQuery } from "@apollo/client";
 import CartItem from '../cartItem';
 import Auth from '../../utils/auth';
@@ -18,7 +18,8 @@ import
     Box,
     Text,
     Flex,
-    Spacer
+    Spacer,
+    Center
 } from '@chakra-ui/react';
 import { idbPromise } from "../../utils/helpers";
 import { ADD_MULTIPLE_TO_CART } from "../../utils/actions";
@@ -39,6 +40,7 @@ const Cart = () =>
         {
             stripePromise.then((res) =>
             {
+                console.log(res)
                 res.redirectToCheckout({ sessionId: data.checkout.session });
             });
         }
@@ -63,7 +65,7 @@ const Cart = () =>
         let sum = 0;
         state.cart.forEach((item) =>
         {
-            sum += item.price * item.purchaseQuantity;
+            sum += item.price;
         });
         return sum.toFixed(2);
     }
@@ -72,10 +74,13 @@ const Cart = () =>
     {
         const productIds = [];
 
+        console.log(productIds);
+
         state.cart.forEach((item) =>
         {
             for (let i = 0; i < item.purchaseQuantity; i++)
             {
+                console.log(item._id)
                 productIds.push(item._id);
             }
         });
@@ -124,11 +129,13 @@ const Cart = () =>
                                 </Flex>
                                 {Auth.loggedIn() ? (
                                     <Box>
-                                        <Button
-                                            onClick={submitCheckout}
-                                        >
-
-                                        </Button>
+                                        <Center>
+                                            <Button
+                                                onClick={submitCheckout}
+                                            >
+                                                Checkout
+                                            </Button>
+                                        </Center>
                                     </Box>
                                 ) : (
                                     <Text>Please log in to finish your purchase.</Text>

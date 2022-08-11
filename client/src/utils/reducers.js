@@ -60,12 +60,6 @@ export const reducer = (state, action) =>
                 })
             };
 
-        case TOGGLE_CART:
-            return {
-                ...state,
-                isOpen: !state.isOpen,
-            };
-
         case ADD_MULTIPLE_TO_CART:
             return {
                 ...state,

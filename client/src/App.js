@@ -21,7 +21,7 @@ import Signup from "./pages/Signup";
 import Success from "./pages/Success";
 import Nav from "./components/nav";
 
-import { ArtProvider } from "./utils/globalState";
+import { ArtProvider } from "./utils/GlobalState";
 
 // const colors = {
 //   brand: {
