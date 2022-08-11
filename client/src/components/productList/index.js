@@ -5,7 +5,7 @@ import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
-import { Spinner, Box } from "@chakra-ui/react";
+import { Spinner, Box, Flex } from "@chakra-ui/react";
 
 function ProductList() {
   const [state, dispatch] = useArtContext();
@@ -55,7 +55,7 @@ function ProductList() {
       ) : (
         <>
           {state.products.length ? (
-            <Box className="flex-row">
+            <Flex className="flex-row">
               {state.products.map((product) => (
                 <ProductItem
                   key={product._id}
@@ -67,7 +67,7 @@ function ProductList() {
                   quantity={product.quantity}
                 />
               ))}
-            </Box>
+            </Flex>
           ) : (
             <h3>There are no artworks for sale</h3>
           )}
