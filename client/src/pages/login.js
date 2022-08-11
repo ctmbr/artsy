@@ -1,36 +1,41 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Link } from "react-router-dom";
-import {
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-  Button,
-} from "@chakra-ui/react";
+import
+  {
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    FormErrorMessage,
+    Button,
+  } from "@chakra-ui/react";
 
 import { LOGIN } from "../utils/mutations";
 import AuthService from "../utils/auth";
 
-function Login(props) {
+function Login(props)
+{
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event) =>
+  {
     event.preventDefault();
-    try {
+    try
+    {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
       AuthService.login(token);
-    } catch (e) {
+    } catch (e)
+    {
       console.log(e);
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event) =>
+  {
     const { name, value } = event.target;
     setFormState({
       ...formState,
