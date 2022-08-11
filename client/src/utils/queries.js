@@ -46,7 +46,7 @@ export const QUERY_ALL_PRODUCTS = gql`
 
 export const QUERY_PRODUCTS = gql`
     query singleProduct($productId: ID!){
-        product(profileId: $profileId){
+        product(productId: $productId){
             _id
             name
             description
