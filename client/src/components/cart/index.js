@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { loadStripe } from '@stripe/stripe-js';
 import { QUERY_CHECKOUT } from '../../utils/queries';
-import { useArtContext } from "../../utils/GlobalState";
+import { useArtContext } from "../../utils/globalState";
 import { useLazyQuery } from "@apollo/client";
 import CartItem from '../cartItem';
 import Auth from '../../utils/auth';

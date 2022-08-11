@@ -1,7 +1,7 @@
 import React from "react";
 import { ADD_TO_CART } from "../../utils/actions";
 import { Link } from "react-router-dom";
-import { useArtContext } from "../../utils/GlobalState";
+import { useArtContext } from "../../utils/globalState";
 import { UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 import { Image, Heading, Container, Box, Button, VStack } from "@chakra-ui/react";

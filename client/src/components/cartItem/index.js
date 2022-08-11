@@ -1,6 +1,6 @@
 import React from "react";
 import { REMOVE_FROM_CART } from "../../utils/actions";
-import { useArtContext } from "../../utils/GlobalState";
+import { useArtContext } from "../../utils/globalState";
 import DeleteBtn from "../DeleteBtn";
 import
     {
