@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
 import AuthService from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 
-export default function Signup(props) {
+export default function Signup(props)
+{
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event) =>
+  {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
@@ -24,7 +25,8 @@ export default function Signup(props) {
     AuthService.login(token);
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event) =>
+  {
     const { name, value } = event.target;
     setFormState({
       ...formState,
