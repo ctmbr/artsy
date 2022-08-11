@@ -1,22 +1,34 @@
 # Artsy
 [![PyPi license](https://badgen.net/pypi/license/pip/)](https://pypi.com/project/pip/)
+
 ## Description 
 A hobby shop for an artist, where they can post and sell artwork that they have created.
 
+## Links
+ - Live application: https://artsy-cfms1234.herokuapp.com/
+ - Presentation Deck: https://docs.google.com/presentation/d/11sEIbYwZ5ivuovwLtsrXnMiQAPcUDtYrd2QbFoZveQw/edit?usp=sharing
+
 ## Table of Contents
 * [Description](#description)
+* [Links](#links)
 * [Instillation](#instillation)
 * [Usage](#usage)
+* [Screenshots](#screenshots)
 * [Contribution](#contribution)
 * [Tests](#tests)
 * [Questions](#questions)
+
 ## Instillation 
 There are no instillation guidelines for this project
+
 ## Usage 
 A user would be able to go onto the site, click on a piece of artwork to see the paintings product page, or add it to a cart. Once they have added all the artworks that they want to cart, the user is then able to go through the payment process through Stripe.
 
+## Screenshots
+
 ## Contribution
 There are no contribution guidelines for this project
+
 ## Tests
 There are no tests for this application
 
