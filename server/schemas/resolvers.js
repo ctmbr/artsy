@@ -20,9 +20,13 @@ const resolvers = {
 
             throw new AuthenticationError('Not logged in');
         },
+        products: async (parent, { _id }) => 
+        {
+            return Product.find();
+        },
         product: async (parent, { _id }) =>
         {
-            return await Product.findById(_id).populate("shop");
+            return await Product.findById(_id);
         },
         checkout: async (parent, args, context) => 
         {
@@ -109,7 +113,14 @@ const resolvers = {
         },
         addOrder: async (parent, { products }, context) =>
         {
-            console.log(context);
+            if (context.user) {
+                const order = new Order({ products });
+
+                await User.findByIdAndUpdate(context.user._id, {
+                    $push: { orders: order } });
+
+                return order;
+            }
         }
     }
 };
