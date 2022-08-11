@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
-import AuthService from "../utils/auth";
+import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 
 export default function Signup(props) {
@@ -20,7 +20,7 @@ export default function Signup(props) {
       },
     });
     const token = mutationResponse.data.addUser.token;
-    AuthService.login(token);
+    Auth.login(token);
   };
 
   const handleChange = (event) => {

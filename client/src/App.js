@@ -13,10 +13,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
-import Login from "./pages/login";
-import NoMatch from "./pages/noMatch";
-import Signup from "./pages/signup";
-import Success from "./pages/success";
+import Login from "./pages/Login";
+import NoMatch from "./pages/NoMatch";
+import Signup from "./pages/Signup";
+import Success from "./pages/Success";
 import Nav from "./components/nav";
 
 import { ArtProvider } from "./utils/globalState";

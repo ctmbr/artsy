@@ -1,43 +1,34 @@
-export function idbPromise(storeName, method, object)
-{
-    return new Promise((resolve, reject) =>
-    {
+export function idbPromise(storeName, method, object) {
+    return new Promise((resolve, reject) => {
         const request = window.indexedDB.open("art-shop", 1);
         let db, tx, store;
-        request.onupgradeneeded = function (e)
-        {
+        request.onupgradeneeded = function (e) {
             const db = request.result;
             db.createObjectStore('products', { keyPath: "_id" });
             db.createObjectStore("cart", { keyPath: "_id" });
         };
 
-        request.onerror = function (e)
-        {
+        request.onerror = function (e) {
             console.log("Error found");
         };
 
-        request.onsuccess = function (e)
-        {
+        request.onsuccess = function (e) {
             db = request.result;
             tx = db.transaction(storeName, "readwrite");
             store = tx.objectStore(storeName);
 
-            db.onerror = function (e)
-            {
+            db.onerror = function (e) {
                 console.log("error", e);
             };
-        
 
-            switch (method)
-            {
+            switch (method) {
                 case 'put':
                     store.put(object);
                     resolve(object);
                     break;
                 case 'get':
                     const all = store.getAll();
-                    all.onsuccess = function ()
-                    {
+                    all.onsuccess = function () {
                         resolve(all.result);
                     };
                     break;
@@ -49,8 +40,7 @@ export function idbPromise(storeName, method, object)
                     break;
             }
 
-            tx.oncomplete = function ()
-            {
+            tx.oncomplete = function () {
                 db.close();
             };
         };
