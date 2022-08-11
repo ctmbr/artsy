@@ -40,15 +40,10 @@ function Login(props) {
 
   return (
     <Box className="container my-1">
-      <Button as={Link} to="/signup">
-        ← Go to Signup
-      </Button>
-
-      <h2>Login</h2>
       <FormControl onSubmit={handleFormSubmit}>
         <Box className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
+          <FormLabel htmlFor="email">Email address:</FormLabel>
+          <Input
             placeholder="youremail@test.com"
             name="email"
             type="email"
