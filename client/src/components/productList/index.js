@@ -5,7 +5,11 @@ import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
+<<<<<<< HEAD
 import { Spinner, Box, Wrap, WrapItem, Center } from "@chakra-ui/react";
+=======
+import { Spinner, Box } from "@chakra-ui/react";
+>>>>>>> 9d21f217 (merge conflict)
 
 function ProductList()
 {
@@ -61,7 +65,6 @@ function ProductList()
       ) : (
         <>
           {state.products.length ? (
-            <Box className="flex-row">
               <Wrap justify="center">
                 {state.products.map((product) => (
                   <WrapItem>
@@ -79,7 +82,6 @@ function ProductList()
                   </WrapItem>
                 ))}
               </Wrap>
-            </Box>
           ) : (
             <h3>There are no artworks for sale</h3>
           )}

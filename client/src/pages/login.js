@@ -39,7 +39,7 @@ function Login(props) {
 
   return (
     <Box className="form">
-      <FormControl onSubmit={handleFormSubmit}>
+      <FormControl onSubmit={handleFormSubmit} isRequired>
         <Box>
           <FormLabel htmlFor="email">Email address:</FormLabel>
           <Input

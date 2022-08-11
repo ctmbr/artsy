@@ -9,7 +9,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Box } from "@chakra-ui/react";
 
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
@@ -53,17 +53,19 @@ function App() {
     <ApolloProvider client={client}>
       <ArtProvider>
         <ChakraProvider marginLeft={60}>
-          <Router>
-            <Jumbotron />
-            <Nav />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/nomatch" element={<NoMatch />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/success" element={<Success />} />
-            </Routes>
-          </Router>
+          <Box p='10px'>
+            <Router>
+              <Jumbotron />
+              <Nav />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/nomatch" element={<NoMatch />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/success" element={<Success />} />
+              </Routes>
+            </Router>
+          </Box>
         </ChakraProvider>
       </ArtProvider>
     </ApolloProvider>
