@@ -12,7 +12,9 @@ function ProductList()
 
   const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
 
-  const { productId } = state;
+  // const { userShop } = state;
+
+  // const { products } = state;
 
   useEffect(() =>
   {
@@ -28,7 +30,7 @@ function ProductList()
       });
     } else if (!loading)
     {
-      idbPromise("product", "get").then((products) =>
+      idbPromise("products", "get").then((products) =>
       {
         dispatch({
           type: UPDATE_PRODUCTS,
@@ -38,24 +40,24 @@ function ProductList()
     }
   }, [data, loading, dispatch]);
 
-  function filterProducts()
-  {
-    if (!productId)
-    {
-      return state.products;
-    }
+  // function filterProducts()
+  // {
+  //   if (!products)
+  //   {
+  //     return state.products;
+  //   }
 
-    return state.products.filter(
-      (product) => product._id === productId
-    );
-  }
+  //   return state.products.filter(
+  //     (product) => product._id === products
+  //   );
+  // }
 
   return (
     <div className="my-2">
       <h2>Artworks:</h2>
       {state.products.length ? (
         <div className="flex-row">
-          {filterProducts().map((product) => (
+          {state.products.map((product) => (
             <ProductItem
               key={product._id}
               _id={product._id}
