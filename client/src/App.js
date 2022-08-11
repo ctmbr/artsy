@@ -29,18 +29,20 @@ const colors = {
   },
 };
 
-const theme = extendTheme({ colors });
+const theme = extendTheme({
+  semanticTokens: { colors: colors, marginleft: 60 },
+});
 
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -54,7 +56,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <ArtProvider>
-        <ChakraProvider theme={theme}>
+        <ChakraProvider marginLeft={60}>
           <Router>
             <Jumbotron />
             <Nav />
