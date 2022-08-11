@@ -1,9 +1,8 @@
-// import "./App.css";
+import "./App.css";
 import * as React from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import
-{
+import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
@@ -14,10 +13,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
-import Login from "./pages/login";
-import NoMatch from "./pages/noMatch";
-import Signup from "./pages/signup";
-import Success from "./pages/success";
+import Login from "./pages/Login";
+import NoMatch from "./pages/NoMatch";
+import Signup from "./pages/Signup";
+import Success from "./pages/Success";
 import Nav from "./components/nav";
 
 import { ArtProvider } from "./utils/globalState";
@@ -34,8 +33,7 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
-const authLink = setContext((_, { headers }) =>
-{
+const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
     headers: {
@@ -50,8 +48,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App()
-{
+function App() {
   return (
     <ApolloProvider client={client}>
       <ArtProvider>

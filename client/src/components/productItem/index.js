@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useArtContext } from "../../utils/globalState";
 import { UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-import { Image, Heading, Box, Button, VStack } from "@chakra-ui/react";
+import { Image, Heading, Container, Box, Button, VStack } from "@chakra-ui/react";
 import "./style.css";
 
 function ProductItem(item)
@@ -42,7 +42,7 @@ function ProductItem(item)
   };
 
   return (
-    <Box className="card px-1 py-1">
+    <Container className="card px-1 py-1">
       <VStack spacing="8pt">
         <Link to={`/products/${_id}`}>
           <Image src={`/images/${image}`} alt={name} />
@@ -53,9 +53,11 @@ function ProductItem(item)
         <Box>
           <span>${price}</span>
         </Box>
-        <Button onClick={addToCart}>Add to cart</Button>
+        <Button colorScheme="blue" onClick={addToCart}>
+        Add to cart
+      </Button>
       </VStack>
-    </Box>
+    </Container>
   );
 }
 
