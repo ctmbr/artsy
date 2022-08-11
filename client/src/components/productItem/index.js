@@ -11,7 +11,9 @@ function ProductItem(item)
 {
   const [state, dispatch] = useArtContext();
 
-  const { _id, name, description, image, price, quantity } = item;
+  const {
+    _id, name, description, image, price, quantity
+  } = item
 
   const { cart } = state;
 
@@ -33,13 +35,13 @@ function ProductItem(item)
     {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...item },
+        product: { ...item }
         //product: { ...item, purchaseQuantity: 1 }
       });
       idbPromise("cart", "put", { ...item });
       //idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
     }
-  };
+  }
 
   return (
     <Container className="card px-1 py-1">
@@ -59,6 +61,6 @@ function ProductItem(item)
       </VStack>
     </Container>
   );
-}
+};
 
 export default ProductItem;

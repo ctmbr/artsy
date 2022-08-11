@@ -11,7 +11,7 @@ import
   } from "@chakra-ui/react";
 
 import { LOGIN } from "../utils/mutations";
-import AuthService from "../utils/auth";
+import Auth from "../utils/auth";
 
 function Login(props)
 {
@@ -27,9 +27,8 @@ function Login(props)
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
-      AuthService.login(token);
-    } catch (e)
-    {
+      Auth.login(token);
+    } catch (e) {
       console.log(e);
     }
   };
@@ -45,7 +44,7 @@ function Login(props)
 
   return (
     <Box className="form">
-      <FormControl onSubmit={handleFormSubmit}>
+      <FormControl onSubmit={handleFormSubmit} isRequired>
         <Box>
           <FormLabel htmlFor="email">Email address:</FormLabel>
           <Input

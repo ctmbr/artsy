@@ -61,7 +61,6 @@ function ProductList()
       ) : (
         <>
           {state.products.length ? (
-            <Box className="flex-row">
               <Wrap justify="center">
                 {state.products.map((product) => (
                   <WrapItem>
@@ -79,7 +78,6 @@ function ProductList()
                   </WrapItem>
                 ))}
               </Wrap>
-            </Box>
           ) : (
             <h3>There are no artworks for sale</h3>
           )}
