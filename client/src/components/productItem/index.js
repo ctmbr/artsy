@@ -47,7 +47,9 @@ function ProductItem(item) {
       <Box>
         <span>${price}</span>
       </Box>
-      <Button onClick={addToCart}>Add to cart</Button>
+      <Button colorScheme="blue" onClick={addToCart}>
+        Add to cart
+      </Button>
     </Container>
   );
 }
