@@ -76,7 +76,7 @@ const Cart = () =>
 
         state.cart.forEach((item) =>
         {
-            for (let i = 0; i < item.purchaseQuantity; i++)
+            for (let i = 0; i < item.quantity; i++)
             {
                 productIds.push(item._id);
             }
@@ -85,6 +85,8 @@ const Cart = () =>
         getCheckout({
             variables: { products: productIds },
         });
+
+        console.log(getCheckout);
     }
 
     return (
@@ -124,19 +126,6 @@ const Cart = () =>
                                         ${calcTotal()}
                                     </Box>
                                 </Flex>
-                                {Auth.loggedIn() ? (
-                                    <Box>
-                                        <Center>
-                                            <Button
-                                                onClick={submitCheckout}
-                                            >
-                                                Checkout
-                                            </Button>
-                                        </Center>
-                                    </Box>
-                                ) : (
-                                    <Text>Please log in to finish your purchase.</Text>
-                                )}
                             </Flex>
                         ) : (
                             <Text>Your cart is empty.</Text>
@@ -144,6 +133,20 @@ const Cart = () =>
                     </DrawerBody>
 
                     <DrawerFooter>
+                        {Auth.loggedIn() ? (
+                            <Box>
+                                <Center>
+                                    <Button
+                                        onClick={submitCheckout}
+                                        mr="10px"
+                                    >
+                                        Checkout
+                                    </Button> 
+                                </Center>
+                            </Box>
+                        ) : (
+                            <Text>Please log in to finish your purchase.</Text>
+                        )}
                         <Button onClick={onClose}>
                             Close
                         </Button>
