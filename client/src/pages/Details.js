@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
+import Cart from "../components/cart";
 import { useArtContext } from "../utils/globalState";
 import { QUERY_PRODUCTS } from "../utils/queries";
-import { ADD_TO_CART, UPDATE_PRODUCTS } from "../utils/actions";
+import { 
+    REMOVE_FROM_CART,
+    ADD_TO_CART,
+    UPDATE_PRODUCTS,
+    UPDATE_CART_QUANTITY
+} from "../utils/actions";
 import { idbPromise } from "../utils/helpers";
-import { Spinner, Box, Image, Heading } from "@chakra-ui/react";
+import { Spinner, Box, Image, Heading, Button } from "@chakra-ui/react";
 
 function Details() {
-  const [state, dispatch] = useArtContext();
-  const { id } = useParams();
+    const [state, dispatch] = useArtContext();
+    const { id } = useParams();
 
-  const [currentProduct, useCurrentProduct] = useState({});
+    const [currentProduct, setCurrentProduct] = useState({});
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
@@ -40,28 +46,32 @@ function Details() {
     }
   }, [products, data, loading, dispatch, id]);
 
-  // const addToCart = () =>
-  // {
-  //     const itemCart = cart.find((cartItem) => cartItem._id === _id)
+    const addToCart = () => {
+        const itemCart = cart.find((cartItem) => cartItem._id === id);
+        if (itemCart) {
+          dispatch({
+            type: UPDATE_CART_QUANTITY,
+            _id: id,
+          });
+          idbPromise('cart', 'put', {
+            ...itemCart,
+          });
+        } else {
+          dispatch({
+            type: ADD_TO_CART,
+          });
+          idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+        }
+      };
 
-  //     if (itemCart)
-  //         {
-  //         dispatch({
-  //             type: UPDATE_CART_QUANTITY,
-  //             _id: _id,
-  //         });
-  //         idbPromise("cart", "put", {
-  //             ...itemCart,
-  //         });
-  //         } else
-  //         {
-  //         dispatch({
-  //             type: ADD_TO_CART,
-  //             product: { ...item }
-  //         });
-  //         idbPromise("cart", "put", { ...item });
-  //     }
-  // };
+    const removeFromCart = () => {
+        dispatch({
+          type: REMOVE_FROM_CART,
+          _id: currentProduct._id,
+        });
+    
+        idbPromise('cart', 'delete', { ...currentProduct });
+      };
 
   return (
     <>
@@ -72,13 +82,25 @@ function Details() {
               src={`/images/${currentProduct.image}`}
               alt={currentProduct.name}
             />
-          </Box>
+            </Box>
+                    <Box>
+                        <Heading>{currentProduct.name}</Heading>
 
-          <Box>
-            <Heading>{currentProduct.name}</Heading>
-          </Box>
-        </>
-      ) : null}
+                        <p>{currentProduct.description}</p>
+
+                        <Button onCLick={addToCart}>
+                            Add to Cart
+                        </Button>
+                        <Button
+                            disabled={!cart.find((p) => p._id === currentProduct._id)}
+                            onClick={removeFromCart}
+                        >
+                            Remove from Cart
+                        </Button>
+                    </Box>
+                </>
+                
+            ) : null}
 
       {loading ? <Spinner /> : null}
     </>
