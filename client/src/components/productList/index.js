@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ProductItem from "../productItem";
-import { useArtContext } from "../../utils/globalState";
+import { useArtContext } from "../../utils/GlobalState";
 import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
