@@ -1,41 +1,35 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import
-  {
-    Box,
-    FormControl,
-    FormLabel,
-    Input,
-    FormErrorMessage,
-    Button,
-  } from "@chakra-ui/react";
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  FormErrorMessage,
+  Button,
+} from "@chakra-ui/react";
 
 import { LOGIN } from "../utils/mutations";
 import AuthService from "../utils/auth";
 
-function Login(props)
-{
+function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
-  const handleFormSubmit = async (event) =>
-  {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try
-    {
+    try {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
       AuthService.login(token);
-    } catch (e)
-    {
+    } catch (e) {
       console.log(e);
     }
   };
 
-  const handleChange = (event) =>
-  {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -44,9 +38,9 @@ function Login(props)
   };
 
   return (
-    <Box className="container my-1">
+    <Box className="form">
       <FormControl onSubmit={handleFormSubmit}>
-        <Box className="flex-row space-between my-2">
+        <Box>
           <FormLabel htmlFor="email">Email address:</FormLabel>
           <Input
             placeholder="youremail@test.com"
@@ -56,7 +50,7 @@ function Login(props)
             onChange={handleChange}
           />
         </Box>
-        <Box className="flex-row space-between my-2">
+        <Box>
           <FormLabel htmlFor="pwd">Password:</FormLabel>
           <Input
             placeholder="******"
