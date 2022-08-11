@@ -4,22 +4,18 @@ import { Link } from "react-router-dom";
 import { useArtContext } from "../../utils/globalState";
 import { UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import { Box, Button } from "@chakra-ui/react";
 
-function ProductItem(item)
-{
+function ProductItem(item) {
   const [state, dispatch] = useArtContext();
 
-  const {
-    _id, name, description, image, price, quantity
-  } = item
+  const { _id, name, description, image, price, quantity } = item;
 
   const { cart } = state;
 
-  const addToCart = () =>
-  {
-    const itemCart = cart.find((cartItem) => cartItem._id === _id)
-    if (itemCart)
-    {
+  const addToCart = () => {
+    const itemCart = cart.find((cartItem) => cartItem._id === _id);
+    if (itemCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: _id,
@@ -29,35 +25,31 @@ function ProductItem(item)
         ...itemCart,
         //purchaseQuantity: parseInt(itemCart.purchaseQuantity) + 1
       });
-    } else
-    {
+    } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...item }
+        product: { ...item },
         //product: { ...item, purchaseQuantity: 1 }
       });
       idbPromise("cart", "put", { ...item });
       //idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
     }
-  }
+  };
 
   return (
-    <div className="card px-1 py-1">
+    <Box className="card px-1 py-1">
       <Link to={`/products/${_id}`}>
-        <img
-          alt={name}
-          src={`/images/${image}`}
-        />
+        <img alt={name} src={`/images/${image}`} />
         <p>{name}</p>
         <p>{description}</p>
         {quantity < 1 && <p> OUT OF STOCK </p>}
       </Link>
-      <div>
+      <Box>
         <span>${price}</span>
-      </div>
-      <button onClick={addToCart}>Add to cart</button>
-    </div>
+      </Box>
+      <Button onClick={addToCart}>Add to cart</Button>
+    </Box>
   );
-};
+}
 
 export default ProductItem;
