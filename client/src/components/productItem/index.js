@@ -5,10 +5,14 @@ import { useArtContext } from "../../utils/globalState";
 import { UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Image, Heading, Container, Box, Button, VStack } from "@chakra-ui/react";
 import "./style.css";
 =======
 >>>>>>> 9d21f217 (merge conflict)
+=======
+import { Image, Heading, Container, Box, Button } from "@chakra-ui/react";
+>>>>>>> 60de6f02 (attempting to fix conflict)
 
 function ProductItem(item)
 {
