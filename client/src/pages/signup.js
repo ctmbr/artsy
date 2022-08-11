@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { Box, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
-import AuthService from "../utils/auth";
+import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 
-export default function Signup(props) {
+export default function Signup(props)
+{
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event) =>
+  {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
@@ -21,10 +22,11 @@ export default function Signup(props) {
       },
     });
     const token = mutationResponse.data.addUser.token;
-    AuthService.login(token);
+    Auth.login(token);
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event) =>
+  {
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -33,11 +35,8 @@ export default function Signup(props) {
   };
 
   return (
-    <Box>
-      <Link to="/login">← Go to Login</Link>
-
-      <h2>Signup</h2>
-      <FormControl onSubmit={handleFormSubmit}>
+    <Box className="form">
+      <FormControl isRequired onSubmit={handleFormSubmit}>
         <Box>
           <FormLabel htmlFor="firstName">First Name:</FormLabel>
           <Input
@@ -79,7 +78,7 @@ export default function Signup(props) {
           />
         </Box>
         <Box>
-          <Button colorScheme="blue" type="submit">
+          <Button onClick={handleFormSubmit} colorScheme="blue" type="submit">
             Submit
           </Button>
         </Box>

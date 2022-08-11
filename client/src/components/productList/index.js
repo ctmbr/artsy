@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import ProductItem from "../productItem";
-import { useArtContext } from "../../utils/globalState";
+import { useArtContext } from "../../utils/GlobalState";
 import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { useQuery } from "@apollo/client";
 import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
-import { Spinner } from "@chakra-ui/react";
+import { Spinner, Box, Wrap, WrapItem, Center } from "@chakra-ui/react";
 
 function ProductList()
 {
@@ -54,34 +54,37 @@ function ProductList()
   // }
 
   return (
-    <div className="my-2">
+    <Box className="my-2">
       <h2>Artworks:</h2>
       {loading ? (
         <Spinner />
       ) : (
         <>
           {state.products.length ? (
-            <div className="flex-row">
-              {state.products.map((product) => (
-                <ProductItem
-                  key={product._id}
-                  _id={product._id}
-                  image={product.image}
-                  name={product.name}
-                  description={product.description}
-                  price={product.price}
-                  quantity={product.quantity}
-                />
-              ))}
-            </div>
+              <Wrap justify="center">
+                {state.products.map((product) => (
+                  <WrapItem>
+                    <Center w="500px">
+                      <ProductItem
+                        key={product._id}
+                        _id={product._id}
+                        image={product.image}
+                        name={product.name}
+                        description={product.description}
+                        price={product.price}
+                        quantity={product.quantity}
+                      />
+                    </Center>
+                  </WrapItem>
+                ))}
+              </Wrap>
           ) : (
             <h3>There are no artworks for sale</h3>
           )}
         </>
       )}
-
-    </div>
-  )
+    </Box>
+  );
 }
 
 export default ProductList;

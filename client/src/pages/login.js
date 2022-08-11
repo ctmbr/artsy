@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Link } from "react-router-dom";
-import {
+import
+{
   Box,
   FormControl,
   FormLabel,
@@ -11,26 +11,30 @@ import {
 } from "@chakra-ui/react";
 
 import { LOGIN } from "../utils/mutations";
-import AuthService from "../utils/auth";
+import Auth from "../utils/auth";
 
-function Login(props) {
+function Login(props)
+{
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event) =>
+  {
     event.preventDefault();
-    try {
+    try
+    {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
-      AuthService.login(token);
+      Auth.login(token);
     } catch (e) {
       console.log(e);
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event) =>
+  {
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -39,14 +43,11 @@ function Login(props) {
   };
 
   return (
-    <Box className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
-
-      <h2>Login</h2>
-      <FormControl onSubmit={handleFormSubmit}>
-        <Box className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
+    <Box className="form">
+      <FormControl onSubmit={handleFormSubmit} isRequired>
+        <Box>
+          <FormLabel htmlFor="email">Email address:</FormLabel>
+          <Input
             placeholder="youremail@test.com"
             name="email"
             type="email"
@@ -54,7 +55,7 @@ function Login(props) {
             onChange={handleChange}
           />
         </Box>
-        <Box className="flex-row space-between my-2">
+        <Box>
           <FormLabel htmlFor="pwd">Password:</FormLabel>
           <Input
             placeholder="******"
@@ -71,7 +72,7 @@ function Login(props) {
             </FormErrorMessage>
           </Box>
         ) : null}
-        <Box className="flex-row flex-end">
+        <Box onClick={handleFormSubmit} className="flex-row flex-end">
           <Button colorScheme="blue" type="submit">
             Submit
           </Button>
