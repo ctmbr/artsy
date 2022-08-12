@@ -56,3 +56,14 @@ export const QUERY_PRODUCTS = gql`
         }
     }
 `
+
+export const QUERY_ALL_REVIEWS = gql`
+    query getReviews{
+       reviews {
+            _id
+            reviewText
+            reviewAuthor
+            createdAt
+       } 
+    }
+`

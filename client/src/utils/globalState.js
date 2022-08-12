@@ -9,7 +9,7 @@ const ArtProvider = ({ value = [], ...props }) =>
     const [state, dispatch] = useArtReducer({
         products: [],
         cart: [],
-        isOpen: false
+        cartOpen: false
     });
 
     return <Provider value={[state, dispatch]}{...props} />;
