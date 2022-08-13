@@ -78,7 +78,7 @@ export default function Signup(props)
           />
         </Box>
         <Box>
-          <Button onClick={handleFormSubmit} colorScheme="blue" type="submit">
+        <Button onClick={handleFormSubmit} colorScheme="blue" type="submit">
             Submit
           </Button>
         </Box>
