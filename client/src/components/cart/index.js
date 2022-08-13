@@ -18,7 +18,8 @@ import
     Box,
     Text,
     Flex,
-    Spacer
+    Spacer,
+    Center
 } from '@chakra-ui/react';
 import { idbPromise } from "../../utils/helpers";
 import { ADD_MULTIPLE_TO_CART } from "../../utils/actions";
@@ -39,6 +40,7 @@ const Cart = () =>
         {
             stripePromise.then((res) =>
             {
+                console.log(res)
                 res.redirectToCheckout({ sessionId: data.checkout.session });
             });
         }
@@ -63,7 +65,7 @@ const Cart = () =>
         let sum = 0;
         state.cart.forEach((item) =>
         {
-            sum += item.price * item.purchaseQuantity;
+            sum += item.price;
         });
         return sum.toFixed(2);
     }
@@ -74,7 +76,7 @@ const Cart = () =>
 
         state.cart.forEach((item) =>
         {
-            for (let i = 0; i < item.purchaseQuantity; i++)
+            for (let i = 0; i < item.quantity; i++)
             {
                 productIds.push(item._id);
             }
@@ -83,6 +85,8 @@ const Cart = () =>
         getCheckout({
             variables: { products: productIds },
         });
+
+        console.log(getCheckout);
     }
 
     return (
@@ -122,17 +126,6 @@ const Cart = () =>
                                         ${calcTotal()}
                                     </Box>
                                 </Flex>
-                                {Auth.loggedIn() ? (
-                                    <Box>
-                                        <Button
-                                            onClick={submitCheckout}
-                                        >
-
-                                        </Button>
-                                    </Box>
-                                ) : (
-                                    <Text>Please log in to finish your purchase.</Text>
-                                )}
                             </Flex>
                         ) : (
                             <Text>Your cart is empty.</Text>
@@ -140,6 +133,20 @@ const Cart = () =>
                     </DrawerBody>
 
                     <DrawerFooter>
+                        {Auth.loggedIn() ? (
+                            <Box>
+                                <Center>
+                                    <Button
+                                        onClick={submitCheckout}
+                                        mr="10px"
+                                    >
+                                        Checkout
+                                    </Button> 
+                                </Center>
+                            </Box>
+                        ) : (
+                            <Text>Please log in to finish your purchase.</Text>
+                        )}
                         <Button onClick={onClose}>
                             Close
                         </Button>
