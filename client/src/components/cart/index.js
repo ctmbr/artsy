@@ -126,6 +126,21 @@ const Cart = () =>
                                         ${calcTotal()}
                                     </Box>
                                 </Flex>
+
+                                {Auth.loggedIn() ? (
+                                <Box>
+                                    <Center>
+                                        <Button
+                                            onClick={submitCheckout}
+                                            mr="10px"
+                                        >
+                                            Checkout
+                                        </Button> 
+                                    </Center>
+                                </Box>
+                                ) : (
+                                <Text>Please log in to finish your purchase.</Text>
+                                )}
                             </Flex>
                         ) : (
                             <Text>Your cart is empty.</Text>
@@ -133,20 +148,6 @@ const Cart = () =>
                     </DrawerBody>
 
                     <DrawerFooter>
-                        {Auth.loggedIn() ? (
-                            <Box>
-                                <Center>
-                                    <Button
-                                        onClick={submitCheckout}
-                                        mr="10px"
-                                    >
-                                        Checkout
-                                    </Button> 
-                                </Center>
-                            </Box>
-                        ) : (
-                            <Text>Please log in to finish your purchase.</Text>
-                        )}
                         <Button onClick={onClose}>
                             Close
                         </Button>

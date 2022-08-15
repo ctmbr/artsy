@@ -25,6 +25,11 @@ There are no instillation guidelines for this project
 A user would be able to go onto the site, click on a piece of artwork to see the paintings product page, or add it to a cart. Once they have added all the artworks that they want to cart, the user is then able to go through the payment process through Stripe.
 
 ## Screenshots
+![Homepage](./assets/homepage.png)
+![Homepage with Cart](./assets/homepagecart.png)
+![Details](./assets/details.png)
+![Login](./assets/login.png)
+![Signup](./assets/signup.png)
 
 ## Contribution
 There are no contribution guidelines for this project
